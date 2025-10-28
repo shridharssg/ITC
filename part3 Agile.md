@@ -1,8 +1,13 @@
 Ques : What was your role while doing team management?
+
 Ques : What is Agile? How you do estimations and Backlog grooming?
+
 Ques : What Agile ceremonies do you practice, and how do they contribute to the project’s success?
+
 Ques : How do you estimate tasks in Agile projects? What challenges do you face during estimation, and how do you address them?
+
 Ques : What techniques do you use to improve sprint velocity, and how do you sustain it over time?
+
 Ques : Suppose you give story points but are unable to complete the task in that time. How do you represent it?
 
 ---
@@ -11,15 +16,15 @@ Ques : Suppose you give story points but are unable to complete the task in that
 
 My role in team management involved both technical leadership and people coordination. Specifically:
 
-Task Allocation & Planning – I broke down project requirements into manageable tasks and assigned them based on team members’ strengths.
+**Task Allocation & Planning** – I broke down project requirements into manageable tasks and assigned them based on team members’ strengths.
 
-Mentoring & Guidance – I helped junior developers with code reviews, best practices, and troubleshooting.
+**Mentoring & Guidance** – I helped junior developers with code reviews, best practices, and troubleshooting.
 
-Ensuring Timely Delivery – I monitored progress, managed blockers, and coordinated with stakeholders to keep timelines on track.
+**Ensuring Timely Delivery** – I monitored progress, managed blockers, and coordinated with stakeholders to keep timelines on track.
 
-Knowledge Sharing – Organized sessions to keep the team updated on new technologies and tools.
+**Knowledge Sharing** – Organized sessions to keep the team updated on new technologies and tools.
 
-Collaboration & Communication – Acted as a bridge between the team and management, ensuring clarity in requirements and expectations.
+**Collaboration & Communication** – Acted as a bridge between the team and management, ensuring clarity in requirements and expectations.
 
 ---
 
