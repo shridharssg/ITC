@@ -1,0 +1,84 @@
+Project Related
+
+	Describe your recent project 
+	Tell about recent projects worked on
+	Challenge faced in project and how handled it
+
+		How you create an api’s that can be integrate with other applications.
+		If api is taking too long, how to deal
+		As a developer. How you think in testing point of view.
+		How you interact with other team members if they are working on same architecture and there is a dependency.
+		
+		What frontend and backend deployment services did you use in your most recent project?
+	Explain your latest projects where you have used AWS services.
+		What are the monitoring tools you have used?
+	
+
+		What are the best practices to be followed while coding
+		What strategies do you follow to maintain and enhance code quality?
+		How you perform the code review or 
+		What do you check during code review
+		How do you approach code reviews, and what key aspects do you focus on during the process?
+===========================================
+
+
+Other
+	Do you prefer backend or frontend and why
+	Have you worked on Salesforce
+		Have you written unit test cases in react?
+	where you are more comfortable with backend or frontend?
+    Apart from GitHub , did you use any other code versioning tool
+	What is your approach when initiating a new project from scratch?
+	How do you ensure that your team stays up to date with evolving technologies and industry trends?
+	
+	What is a Progressive Web Application (PWA), and how can it function in an offline environment?
+	Performance optimization techniques
+===========================================
+
+
+Agile
+	What was your role while doing team management?
+	What is Agile? How you do estimations and Backlog grooming?
+	What Agile ceremonies do you practice, and how do they contribute to the project’s success?
+	How do you estimate tasks in Agile projects? What challenges do you face during estimation, and how do you address them?
+	What techniques do you use to improve sprint velocity, and how do you sustain it over time?
+===========================================
+
+
+AWS
+	AWS services used
+	Tell about a lambda function you've wrote and what challenges you faced in it
+	If you have to backup DB for auditing, how would you do and what services would you use for it
+	How do you retrieve and process large files (e.g., ~10 GB) stored in Amazon S3?
+	How do you set up and access an AWS EC2 instance for application deployment?
+	Can you describe the Kafka consumer service you implemented, and how it integrates with the backend service containing it?
+	What is the role of an API Gateway in a microservices architecture?
+	How do you configure a message queue (e.g., visibility timeout, execution time, etc.)?
+	How do you enable cross-account communication in AWS?
+	Apart from SQS and Kafka, what other message queue systems have you worked with?
+	Why would you choose Kafka over SQS?
+	how to communicate between two different aws accounts? What permissions are required?
+	what is route53? How to route traffic from abc.com to sapana.com in route53?
+	disadvantages of CloudFront?
+	How to use MongoDB for analytics purpose? 	
+	AWS storage classes
+	Limitations of lambda. Have you faced any?
+	How would you manage query performance in lambda?
+	Suppose if you want to design an api with lambda and api gateway, what are the best practices you are going to follow. Think about scalability. 
+	What security check tool do you use during the deployment process? 
+	How would you design a batch processing system using Amazon SQS? Please explain your error handling strategy, including the use of Dead-Letter Queues (DLQ).
+	When should 4xx and 5xx HTTP status codes be used in REST API design?
+ 
+	
+	In this scenario, data needs to be retained for a period of 2 years, after which it should be automatically deleted. Additionally, high-speed access to the data is required for the first 6 months
+	
+	Suppose in aws you can only archive or backup the database for past 1 day what other approaches can you follow to backup the db. How your approach would be different if you want to archive it?
+	
+	If attacker deletes your database, what are the steps you’ll take to fix it.
+	
+ 
+Microservices 
+   what is microservice based architecture and have you used it?
+   In your previous project why used this aws services in architecture? Is there any alternative to any service?
+	Can you explain the difference between a monolithic architecture and microservices architecture?
+   what databases you have used?
