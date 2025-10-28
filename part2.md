@@ -1,12 +1,33 @@
 Ques.	where you are more comfortable with backend or frontend?
+
+Ques. Apart from GitHub , did you use any other code versioning tool
+
 Ques. What is your approach when initiating a new project from scratch?
+
+Ques. 	How do you ensure that your team stays up to date with evolving technologies and industry trends?
+
+Ques : 	What is a Progressive Web Application (PWA), and how can it function in an offline environment?
+
+
 
 ---
 
 **Ques:	where you are more comfortable with backend or frontend?**
 
-I am more comfortable with backend development, especially using Node.js. I enjoy designing and implementing REST APIs, managing business logic, and integrating with databases and external services. My focus is on writing clean, scalable, and secure backend code, implementing best practices like proper error handling, testing (unit, integration, functional), and optimizing performance.
+I am more comfortable with backend development, especially using Node.js. I enjoy designing and implementing REST APIs, managing business logic, and integrating with databases and cloud platforms. My focus is on writing clean, scalable, and secure backend code, implementing best practices like proper error handling, testing (unit, 
+integration, functional).
+
+I find problem-solving and optimizing performance on the server side more challenging and rewarding than working on UI design
+
+Additionally, backend skills align well with my interest in AWS services,
+
 I also have experience deploying backend services using CI/CD pipelines and monitoring them in production. While I can work with frontend when needed, my strength and passion lie in building robust backend systems.
+
+---
+
+**Ques : Apart from GitHub , did you use any other code versioning tool**
+
+Yes, apart from GitHub, I have experience with Bitbucket and GitLab for version control. Both are Git-based platforms, but they offer additional features like integrated CI/CD pipelines and better project management tools. For example, I’ve used Bitbucket in projects where we leveraged its integration with Jira for issue tracking, and GitLab for its built-in CI/CD capabilities to automate deployments. I’m comfortable adapting to any Git-based system since the underlying concepts remain the same.”
 
 ---
 
@@ -84,5 +105,71 @@ Set up error tracking (Sentry).
 
 Create README with setup instructions.
 Add Swagger/OpenAPI for API documentation.
+
+---
+
+**Ques. 	How do you ensure that your team stays up to date with evolving technologies and industry trends?**
+
+I believe continuous learning is key for staying relevant. I ensure my team stays updated by:
+
+Regular Knowledge Sharing Sessions – We conduct weekly or bi-weekly sessions where team members present new tools, frameworks, or best practices they’ve explored.
+
+Encouraging Certifications and Online Learning – I recommend platforms like AWS Training, Coursera, and Pluralsight for structured learning paths.
+
+Tech News & Community Engagement – We follow official blogs, attend webinars, and participate in developer communities like Stack Overflow and GitHub Discussions.
+
+Hands-on Experiments – Whenever a new technology is relevant, we create small proof-of-concept projects to evaluate its benefits before adopting it
+
+AWS Service Updates & Workshops – We regularly review AWS release notes and conduct internal workshops on new services like Lambda enhancements, API Gateway features, or security best practices.
+
+Hands-on POCs – Whenever AWS introduces a new feature (e.g., Step Functions improvements or new DynamoDB capabilities), we build small proof-of-concepts to understand real-world applicability.
+
+Node.js Ecosystem Monitoring – We track updates in Node.js versions, performance improvements, and popular frameworks like Express or NestJS, ensuring compatibility and best practices.
+
+---
+
+**Ques : 	What is a Progressive Web Application (PWA), and how can it function in an offline environment?**
+
+**What is a PWA?**
+A Progressive Web Application (PWA) is basically a website that behaves like a mobile app.
+
+You can install it on your phone or desktop like an app.
+
+It works in a browser but feels like a native app (fast, responsive, full-screen).
+
+
+**How does it work offline?** 
+Normally, websites need the internet. PWAs use special technology to work even when you’re offline:
+
+
+**Service Worker**
+
+A small script that runs in the background.
+
+It stores (caches) important files like HTML, CSS, JS, and images.
+
+When you lose internet, it serves these cached files instead of fetching from the server.
+
+
+
+**Cache Storage**
+
+PWAs save data locally using Cache API or IndexedDB.
+
+Example: If you open a news app offline, you can still read articles that were cached earlier.
+
+
+**Manifest File**
+
+This file makes the PWA look like an app (icon, splash screen, etc.).
+
+✅ Example:
+
+Imagine you have a PWA for a shopping site.
+
+You browse products online → PWA caches product pages.
+
+Later, you go offline → You can still see those cached products because the service worker serves them.
+
 
 ---
