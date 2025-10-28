@@ -12,6 +12,77 @@ Ques : Suppose you give story points but are unable to complete the task in that
 
 ---
 
+**Agile Process in Short**
+
+**Requirement Gathering** – Collect high-level requirements from stakeholders.
+
+**Product Backlog Creation** – List and prioritize all features and tasks.
+
+**Sprint Planning** – Select backlog items for the sprint and estimate effort.
+
+**Task Breakdown** – Split stories into smaller, actionable tasks.
+
+**Development** – Implement features iteratively with continuous integration.
+
+**Daily Stand-ups** – Short meetings to track progress and remove blockers.
+
+**Testing** – Validate functionality through unit, integration, and acceptance tests.
+
+**Sprint Review** – Demonstrate completed work to stakeholders for feedback.
+
+**Sprint Retrospective** – Analyze what went well and what can improve.
+
+**Release/Deployment** – Deliver working software incrementally to production.
+
+
+✅ **Think of it as Plan → Build → Test → Review → Improve → Release.**
+
+
+
+✅ **Jira Issue Types**
+
+**Epic**
+
+A large feature or initiative that spans multiple sprints.
+
+Example: “Implement Payment Gateway Integration.”
+
+
+**Story**
+
+A user requirement that delivers value and can be completed in one sprint.
+
+Example: “As a user, I want to pay using credit card.”
+
+
+**Task**
+
+A technical or non-functional activity (not directly user-facing).
+
+Example: “Set up AWS Lambda for payment service.”
+
+
+**Sub-task**
+
+A smaller piece of work under a Story or Task.
+
+Example: “Write unit tests for payment Lambda function.”
+
+
+
+**Bug**
+
+A defect or issue that needs fixing.
+
+Example: “Payment page crashes when selecting PayPal.”
+
+
+
+
+✅ **Epic → Stories → Tasks → Sub-tasks → Bugs.**
+
+---
+
 **Ques : What was your role while doing team management?**
 
 My role in team management involved both technical leadership and people coordination. Specifically:
