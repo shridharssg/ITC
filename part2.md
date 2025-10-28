@@ -1,3 +1,6 @@
+
+Ques. what databases you have used?
+
 Ques.	where you are more comfortable with backend or frontend?
 
 Ques. Apart from GitHub , did you use any other code versioning tool
@@ -9,6 +12,46 @@ Ques. 	How do you ensure that your team stays up to date with evolving technolog
 Ques : 	What is a Progressive Web Application (PWA), and how can it function in an offline environment?
 
 
+---
+
+**Ques: what databases you have used?**
+
+Initially, when I started my career, I worked on MongoDB for NoSQL document-based storage. Later, I gained experience with MySQL and SQL Server for relational database management. More recently, I’ve worked with Amazon DynamoDB, which is a fully managed NoSQL database on AWS. This mix of relational and NoSQL experience has helped me design solutions based on the right database for the use case—whether it’s structured data with complex queries or high-performance, scalable applications
+
+
+**When should you go with NoSQL or SQL?**
+
+**Go with SQL (Relational Database) when:**
+
+- Data is structured and relationships between entities are important.
+
+- You need complex queries (JOINs, aggregations).
+
+- ACID transactions are critical for consistency (e.g., banking systems).
+
+- Schema is stable and changes infrequently.
+
+**Go with NoSQL when:**
+
+- Data is unstructured or semi-structured (JSON, documents).
+
+- You need high scalability and horizontal scaling for large datasets.
+
+- Schema changes frequently (e.g., adding new fields without breaking the app).
+
+- Use cases involve real-time analytics, IoT, or high write/read throughput.
+
+**Examples:**
+
+SQL: E-commerce order management, financial systems.
+
+NoSQL: Social media feeds, IoT sensor data, content management systems.
+
+**SQL vs NoSQL in one line:**
+
+SQL = Structured, relational, strong consistency.
+
+NoSQL = Flexible, scalable, handles big data and dynamic schemas.
 
 ---
 
