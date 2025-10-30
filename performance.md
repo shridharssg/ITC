@@ -3,6 +3,8 @@ Ques : Performance optimization techniques
 
 Ques : How do you retrieve and process large files (e.g., ~10 GB) stored in Amazon S3?
 
+Ques: What security check tool do you use during the deployment process?
+
 ---
 
 **Ques : Performance optimization techniques**
@@ -178,3 +180,75 @@ Monitor memory usage and set appropriate limits.
 Use CloudWatch Logs and X-Ray for performance tracing.
 
 Use S3 Transfer Acceleration for faster downloads across regions.
+
+---
+
+**Ques: What security check tool do you use during the deployment process?**
+
+
+🔐 Security Check Tools Used During Deployment (Node.js + AWS)
+Ensuring security during deployment is critical to protect infrastructure, data, and application logic. Below are commonly used tools and practices for performing security checks in a CI/CD pipeline or manual deployment process.
+
+✅ Recommended Security Tools
+
+**1. AWS IAM Access Analyzer**
+
+Identifies overly permissive IAM roles, policies, and resource access.
+Helps ensure least privilege principle is followed.
+
+**2. AWS Inspector**
+
+Automatically scans EC2 instances and container images for vulnerabilities.
+Integrates with AWS Security Hub for centralized reporting.
+
+**3. AWS Config**
+
+Monitors configuration changes and compliance violations.
+Detects insecure settings like public S3 buckets or open security groups.
+
+**4. Snyk**
+
+Scans Node.js dependencies for known vulnerabilities.
+Integrates with GitHub, GitLab, Bitbucket, and CI/CD pipelines.
+
+**5. npm audit**
+
+Built-in tool to check for vulnerabilities in package.json and package-lock.json.
+
+Shell# Run auditnpm auditShow more lines]
+
+**7. Checkov / tfsec (for IaC Security)**
+
+Scans Terraform or CloudFormation templates for misconfigurations.
+
+Ensures secure infrastructure provisioning.
+
+**8. Git Secrets / Talisman**
+
+Prevents committing secrets like AWS keys or passwords into source control.
+
+
+**🔄 Integration in CI/CD Pipeline**
+
+Use GitHub Actions, GitLab CI, or AWS CodePipeline to automate security checks.
+
+Example workflow:
+
+- Run npm audit and snyk test on every pull request.
+
+- Scan container images with AWS Inspector before deployment.
+
+- Validate IAM roles with Access Analyzer.
+
+
+
+
+**🛡️ Best Practices**
+
+- Rotate credentials regularly and use AWS Secrets Manager.
+
+- Enable MFA for all IAM users.
+
+- Use VPC, Security Groups, and NACLs to isolate services.
+
+- Monitor with AWS CloudTrail, GuardDuty, and Security Hub
