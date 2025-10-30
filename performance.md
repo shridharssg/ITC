@@ -99,3 +99,82 @@ New Relic / Datadog – Full-stack monitoring and APM.
 
 **Ques : How do you retrieve and process large files (e.g., ~10 GB) stored in Amazon S3?**
 
+Processing large files from Amazon S3 requires memory-efficient techniques to avoid timeouts, memory overflows, and performance bottlenecks.
+
+✅ Recommended Techniques
+
+**1. Stream the File Instead of Downloading Entirely**
+Use S3 object streaming with Node.js to read the file in chunks.
+
+const AWS = require('aws-sdk');
+const s3 = new AWS.S3();
+
+const params = {
+  Bucket: 'your-bucket-name',
+  Key: 'large-file.csv'
+};
+
+const s3Stream = s3.getObject(params).createReadStream();
+
+s3Stream.on('data', (chunk) => {
+  // Process chunk here
+});
+
+s3Stream.on('end', () => {
+  console.log('File processing complete.');
+});
+
+s3Stream.on('error', (err) => {
+  console.error('Error reading file:', err);
+});
+
+**2. Use AWS Lambda with S3 Event + AWS S3 Select (for partial reads)**
+
+If you only need specific rows or columns from a large CSV/JSON file, use S3 Select to query parts of the file.
+
+const params = {
+  Bucket: 'your-bucket-name',
+  Key: 'large-file.csv',
+  ExpressionType: 'SQL',
+  Expression: 'SELECT * FROM S3Object WHERE column_name = \'value\'',
+  InputSerialization: {
+    CSV: {
+      FileHeaderInfo: 'USE'
+    }
+  },
+  OutputSerialization: {
+    JSON: {}
+  }
+};
+
+s3.selectObjectContent(params, (err, data) => {
+  if (err) throw err;
+  // Handle streamed response
+});
+
+3. Use AWS Data Pipeline or AWS Glue for ETL
+For structured data (CSV, JSON, Parquet), use AWS Glue or Data Pipeline to process and transform large files.
+
+Schedule jobs to extract, transform, and load (ETL) data.
+Store processed results in S3, DynamoDB, or Redshift.
+
+
+4. Use AWS EC2 or AWS Batch for Heavy Processing
+If the file is too large for Lambda (max 10 GB temp storage), use:
+
+EC2 with EBS volumes for custom processing.
+AWS Batch for parallel processing of large datasets.
+
+
+5. Use Multipart Download for Parallel Processing
+Split the file into parts and download/process them concurrently.
+
+**Best Practices**
+
+Use streams to avoid loading entire file into memory.
+
+Monitor memory usage and set appropriate limits.
+
+Use CloudWatch Logs and X-Ray for performance tracing.
+
+Use S3 Transfer Acceleration for faster downloads across regions.
