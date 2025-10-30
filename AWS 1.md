@@ -284,26 +284,242 @@ Provisioned Concurrency is ideal when:
 
 ---
 
-How would you manage query performance in Lambda?
+**Ques : How would you manage query performance in Lambda?**
+
+🚀 Managing Query Performance in AWS Lambda
+Optimizing query performance in AWS Lambda involves tuning both the Lambda function and the external services it interacts with (like databases or APIs). Below are best practices and a real-world example from the Smart Feedback Collector project.
+✅ Best Practices
+1. Use Connection Pooling Wisely
+
+Problem: Lambda is stateless and may spin up multiple instances, each creating new DB connections.
+Solution: Use RDS Proxy for relational databases or DynamoDB, which handles scaling better.
+Example: In a Node.js Lambda querying MySQL, use RDS Proxy to manage connections efficiently.
+
+2. Optimize Cold Starts
+
+Keep your function size small.
+Avoid heavy initialization outside the handler.
+Use Provisioned Concurrency for critical APIs.
+
+3. Use Efficient Queries
+
+Avoid SELECT *; fetch only required fields.
+Use indexes properly in DynamoDB or RDS.
+
+4. Cache Results
+
+Use Lambda + API Gateway + CloudFront or ElastiCache (Redis) to cache frequent queries.
+
+5. Paginate Large Results
+
+Don’t return thousands of records in one go.
+Use pagination or filtering to manage large datasets.
+
+6. Timeouts and Retries
+
+Set appropriate timeouts for DB/API calls.
+Use exponential backoff for retries to avoid overwhelming services.
+
+
+🔧 Real-World Example: Smart Feedback Collector
+If you're querying feedback data from DynamoDB:
+
+Use Query instead of Scan for better performance.
+Use Global Secondary Indexes (GSI) for filtering by user or date.
+Cache frequent queries using Redis or CloudFront.
 
 ---
 
-Suppose if you want to design an API with Lambda and API Gateway, what are the best practices you are going to follow. Think about scalability.
+**Ques : Suppose if you want to design an API with Lambda and API Gateway, what are the best practices you are going to follow. Think about scalability.**
+
+
+⚙️ Best Practices for Designing APIs with Lambda + API Gateway (Scalability)
+Designing scalable APIs using AWS Lambda and API Gateway requires thoughtful architecture and configuration. Below are key best practices to ensure performance, security, and maintainability.
+✅ Architecture Best Practices
+1. Use REST or HTTP APIs
+
+REST API: Rich features, suitable for complex APIs.
+HTTP API: Lightweight, faster, and cost-effective for simple use cases.
+
+2. Separate Concerns
+
+Use multiple Lambda functions for different endpoints (e.g., /create, /update, /delete) to isolate logic and scale independently.
+
+3. Use JSON Schema Validation
+
+Validate request payloads at the API Gateway level to reduce unnecessary Lambda invocations and improve performance.
+
+4. Enable Caching
+
+Use API Gateway caching for GET endpoints to reduce latency and backend load.
+
+5. Secure with IAM + Cognito
+
+Use Amazon Cognito for user authentication.
+Use IAM roles for secure Lambda execution.
+
+6. Use Throttling and Rate Limiting
+
+Protect backend services from abuse by configuring throttling and rate limits in API Gateway.
+
+7. Monitor with CloudWatch
+
+Set up CloudWatch metrics, alarms, and logs for each endpoint to monitor performance and detect anomalies.
+
+
+🔧 Real-World Example: E-Commerce API
+
+
+/products → GET → Cached at API Gateway.
+
+/order → POST → Validated via JSON schema.
+
+/user/login → POST → Authenticated via Cognito.
 
 ---
 
-How do you enable cross-account communication in AWS?
+**Ques: How do you enable cross-account communication in AWS?**
+
+How to Enable Cross-Account Communication in AWS?
+Cross-account communication allows resources in Account A to interact with resources in Account B.
+✅ Common Methods:
+
+
+Resource-Based Policies:
+
+S3, Lambda, SNS, etc. support resource policies.
+Example: Allow Account B to invoke Lambda in Account A.
+
+
+
+IAM Roles with Trust Policies:
+
+Create a role in Account A.
+Allow Account B to assume that role.
+Use sts:AssumeRole.
+
+
+
+VPC Peering / Transit Gateway:
+
+For network-level communication.
+
+
+
+EventBridge Cross-Account Events:
+
+Send events from Account A to Account B.
+
+
+
+🔧 Example:
+You want Lambda in Account B to access S3 in Account A:
+
+Add a bucket policy in Account A's S3:
+
+{
+  "Effect": "Allow",
+  "Principal": {
+    "AWS": "arn:aws:iam::ACCOUNT_B_ID:role/LambdaExecutionRole"
+  },
+  "Action": "s3:GetObject",
+  "Resource": "arn:aws:s3:::your-bucket-name/*"
+}
 
 ---
 
-How to communicate between two different AWS accounts? What permissions are required?
+**Ques: How to communicate between two different AWS accounts? What permissions are required?**
+
+✅ Required Permissions:
+
+**IAM Role Trust Policy (in Account A):**
+
+{
+  "Effect": "Allow",
+  "Principal": {
+    "AWS": "arn:aws:iam::ACCOUNT_B_ID:root"
+  },
+  "Action": "sts:AssumeRole"
+}
+
+**IAM Role Permissions (in Account A):**
+
+{
+  "Effect": "Allow",
+  "Action": "s3:GetObject",
+  "Resource": "arn:aws:s3:::your-bucket-name/*"
+}
+
+**Caller in Account B must have permission to sts:AssumeRole.**
 
 ---
 
-What is Route53? How to route traffic from abc.com to sapana.com in Route53?
+**Ques: What is Route53? How to route traffic from abc.com to sapana.com in Route53?**
+
+**✅ What is Route 53?**
+
+Amazon Route 53 is a highly available and scalable DNS web service. It’s used for:
+
+Domain registration
+
+DNS routing
+
+Health checks
+
+Traffic management
+
+✅ Routing Traffic from abc.com to sapana.com:
+
+You can achieve this using:
+
+
+HTTP Redirection:
+
+Route 53 itself doesn’t support HTTP redirects.
+
+Use S3 static website hosting with redirect rules.
+
+
+
+Steps:
+
+Create an S3 bucket named abc.com.
+
+Enable static website hosting.
+
+Set redirection to sapana.com.
+
+
+
+Update Route 53 DNS:
+
+Create an A record for abc.com pointing to the S3 website endpoint.
+
+{
+  "RedirectAllRequestsTo": {
+    "HostName": "sapana.com",
+    "Protocol": "https"
+  }
+}
+``
 
 ---
 
-Disadvantages of CloudFront?
+**Ques: Disadvantages of CloudFront?**
+
+While CloudFront is powerful, it has some limitations:
+❌ Disadvantages:
+
+**Complex Configuration:** : Setting up behaviors, origins, and cache policies can be tricky
+
+**Cost:** : Can be expensive for high traffic if not optimized.
+
+**Propagation Delay:** : DNS and cache invalidation can take time.
+
+**Limited Real-Time Logs:** : Logs are delayed unless using real-time logging (extra cost).
+
+**No Native Redirects:** : You need Lambda@Edge or S3 for redirects.
+
+**Regional Restrictions:** : Some countries may block CloudFront IPs.
 
 ---
