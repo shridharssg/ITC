@@ -473,25 +473,21 @@ Traffic management
 You can achieve this using:
 
 
-HTTP Redirection:
+**HTTP Redirection:**
 
 Route 53 itself doesn’t support HTTP redirects.
 
 Use S3 static website hosting with redirect rules.
 
-
-
 Steps:
 
-Create an S3 bucket named abc.com.
+- Create an S3 bucket named abc.com.
 
-Enable static website hosting.
+- Enable static website hosting.
 
-Set redirection to sapana.com.
+- Set redirection to sapana.com.
 
-
-
-Update Route 53 DNS:
+**Update Route 53 DNS:**
 
 Create an A record for abc.com pointing to the S3 website endpoint.
 
@@ -501,6 +497,7 @@ Create an A record for abc.com pointing to the S3 website endpoint.
     "Protocol": "https"
   }
 }
+
 ``
 
 ---
