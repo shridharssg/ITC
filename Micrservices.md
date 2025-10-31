@@ -249,3 +249,49 @@ CI/CD pipelines with GitHub Actions or AWS CodePipeline
 
 **Ques : Can you explain the difference between a monolithic architecture and microservices architecture?**
 
+**🧩 Monolithic Architecture**
+
+A monolithic architecture is a traditional software design where the entire application is built as a single, unified unit.
+
+✅ Characteristics:
+
+Single codebase and deployment unit
+Shared database across all modules
+Tight coupling between components
+Easier to develop and test initially
+
+**❌ Limitations:**
+
+Difficult to scale individual components
+Harder to maintain as the codebase grows
+Deployment of one feature affects the entire app
+Limited fault isolation
+
+🛠️ Example:
+An e-commerce app where user management, product catalog, order processing, and payment logic are all part of one Node.js Express server and one database.
+
+**🧱 Microservices Architecture**
+
+A microservices architecture breaks the application into smaller, independent services that communicate over APIs.
+✅ Characteristics:
+
+Each service handles a specific business function
+
+Independent deployment and scaling
+
+Services can use different languages and databases
+
+Better fault isolation and maintainability
+
+🛠️ Example:
+**An e-commerce app with:**
+
+- User Service (Node.js + DynamoDB)
+
+- Product Service (Node.js + MongoDB)
+
+- Order Service (Node.js + RDS)
+
+- Notification Service (Node.js + SNS)
+
+Each service is deployed independently using AWS Lambda, ECS, or Fargate, and communicates via API Gateway or SQS.
