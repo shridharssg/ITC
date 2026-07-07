@@ -1,0 +1,292 @@
+GenAI Interview Roadmap (2 Years Experience)
+
+1.  GenAI Fundamentals
+
+-   AI, ML, DL, GenAI
+-   LLMs
+-   Transformer architecture (high level)
+-   Tokens
+-   Context window
+-   Temperature
+-   Top-K
+-   Top-P
+-   Hallucination
+-   Deterministic vs Creative responses
+-   Foundation models
+-   Open-source vs Closed-source models
+-   Model selection (Gemini, GPT, Claude, Llama)
+
+2.  Prompt Engineering
+
+-   Prompt engineering fundamentals
+-   Prompt structure
+-   System Prompt
+-   User Prompt
+-   Assistant Prompt
+-   Zero-shot
+-   One-shot
+-   Few-shot
+-   Chain of Thought
+-   ReAct
+-   Self-consistency
+-   Prompt Templates
+-   Dynamic Prompting
+-   Prompt Injection
+-   Jailbreaking
+-   Guardrails
+-   Prompt Versioning
+
+3.  Embeddings
+
+-   What are embeddings?
+-   How embeddings are generated
+-   Vector dimensions
+-   Similarity search
+-   Cosine similarity
+-   Euclidean distance
+-   Dot product
+-   Embedding model selection
+-   Embedding limitations
+
+4.  Vector Databases
+
+-   Why vector DB?
+-   Pinecone
+-   OpenSearch
+-   Chroma
+-   FAISS
+-   Milvus
+-   Metadata filtering
+-   Indexes
+-   Hybrid Search
+-   ANN algorithms
+-   Storage optimization
+
+5.  RAG
+
+-   What is RAG?
+-   Why RAG?
+-   RAG architecture
+-   Document loading
+-   Chunking
+-   Chunk overlap
+-   Embedding generation
+-   Vector storage
+-   Retrieval
+-   Similarity search
+-   Re-ranking
+-   Context generation
+-   LLM response
+-   Citation
+-   Hallucination reduction
+-   Parent-child retrieval
+-   Multi-query retrieval
+-   Contextual compression
+-   Hybrid search
+-   Production RAG
+
+6.  LangChain
+
+-   Architecture
+-   Models
+-   PromptTemplate
+-   ChatPromptTemplate
+-   Chains
+-   LCEL
+-   RunnableSequence
+-   RunnableParallel
+-   OutputParser
+-   Retrievers
+-   Memory
+-   Callbacks
+-   Tools
+-   Agents
+-   Document loaders
+-   Text splitters
+-   Vector stores
+-   Conversation memory
+-   Streaming
+-   Error handling
+
+7.  LangGraph
+
+-   State
+-   Nodes
+-   Edges
+-   Conditional edges
+-   Multi-agent workflows
+-   Cycles
+-   Human in the loop
+-   Checkpointing
+-   Interrupts
+-   Production orchestration
+
+8.  LLM APIs
+
+-   Gemini
+-   OpenAI
+-   Claude
+-   API parameters
+-   Streaming
+-   Function Calling
+-   Structured Output
+-   JSON Mode
+-   Token counting
+-   Rate limiting
+
+9.  Performance Optimization
+
+-   Response latency
+-   First token latency
+-   Time to last token
+-   Parallel execution
+-   Async programming
+-   Streaming responses
+-   Caching
+-   Semantic cache
+-   Redis cache
+-   Embedding cache
+-   Prompt optimization
+-   Chunk optimization
+-   Batch embeddings
+-   Model selection
+-   Context optimization
+-   Connection pooling
+
+10. Cost Optimization / Billing
+
+-   Input tokens
+-   Output tokens
+-   Token pricing
+-   Embedding cost
+-   Vector DB cost
+-   API cost
+-   Monitoring
+-   Budget limits
+-   Rate limiting
+-   Prompt compression
+-   Response truncation
+-   Smaller models
+-   Cache strategies
+-   Cost estimation
+-   Cost alerts
+
+11. Testing GenAI Applications
+
+-   Unit testing
+-   Integration testing
+-   Prompt testing
+-   Golden datasets
+-   Regression testing
+-   Hallucination testing
+-   Faithfulness
+-   Relevancy
+-   RAG evaluation
+-   Human evaluation
+-   Automated evaluation
+-   Load testing
+-   Stress testing
+
+12. Security
+
+-   Prompt injection
+-   Jailbreak attacks
+-   Data leakage
+-   PII masking
+-   RBAC
+-   Secrets management
+-   Encryption
+-   API security
+-   OWASP for LLMs
+
+13. Observability & Monitoring
+
+-   LangSmith
+-   Logging
+-   Tracing
+-   Token monitoring
+-   Latency monitoring
+-   Failure analysis
+-   Prompt versioning
+-   Feedback collection
+-   Evaluation pipelines
+
+14. Deployment
+
+-   FastAPI
+-   Docker
+-   ECS
+-   ECR
+-   ALB
+-   Auto Scaling
+-   CI/CD
+-   Secrets Manager
+-   Environment configuration
+
+15. AWS Services
+
+-   ECS
+-   Lambda
+-   API Gateway
+-   S3
+-   OpenSearch
+-   CloudWatch
+-   IAM
+-   Bedrock (basics)
+-   Secrets Manager
+
+16. Real Project Design
+
+-   End-to-end architecture
+-   Technology selection
+-   Prompt design
+-   Retrieval flow
+-   Hallucination reduction
+-   Latency optimization
+-   Cost optimization
+-   Challenges
+
+17. Production Challenges
+
+-   Empty retrieval
+-   Hallucinations
+-   Duplicate chunks
+-   Long documents
+-   Context overflow
+-   API failures
+-   Rate limiting
+-   Slow responses
+-   Token limits
+-   Retry mechanisms
+-   Fallback models
+
+18. Coding Round
+
+-   Python basics
+-   FastAPI
+-   LangChain coding
+-   RAG implementation
+-   Streaming
+-   Async programming
+-   Prompt templates
+-   Structured outputs
+
+19. Scenario-Based Questions
+
+-   Reduce hallucinations
+-   Reduce latency
+-   Reduce cost
+-   Test RAG
+-   Scale to thousands of users
+-   Empty vector search
+-   Prompt injection
+-   Monitoring
+
+20. HR + Experience Questions
+
+-   Explain project
+-   Your role
+-   Challenges
+-   Production issues
+-   Why LangChain?
+-   Future improvements
