@@ -1,3 +1,6 @@
+https://cx.persistent.com/scheduling/session-join?c=eyJpdiI6Ijg4NjdmMGYwMjQzOWQ2ZjM4ODU1ODIzMDQ5YzAzZjE5IiwiZGF0YSI6ImYzYjRlZTA3MmZlMDUwNGZlMDZlNTFjNTJlODUxNjA1ZjVlN2M5ZDBhMjE1YTRkNzFhZjNjMzg0ZTg3NTQwNjY5NjU5MmMyM2NjY2I3MmFhMDNlNmNiZWQ0MGMzMGJjZiJ9&meetingId=767281&meetingParticipantId=2733001&tid=2867
+
+
 **1. AWS Services & Architecture**
 
 AWS services used
