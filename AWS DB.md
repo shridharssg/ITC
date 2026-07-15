@@ -1,8 +1,5 @@
 ✅ 2. Database & Data Management
 
-https://cx.persistent.com/scheduling/session-join?c=eyJpdiI6IjZjYWExYTc4M2VmYTJhMTkwZDIzOTliYmJlNjgxZjNjIiwiZGF0YSI6ImUxNzFhYjEwMDMwY2M1ZDZjOWRhNTUzYmRkNzFiOTQzYmQyODdmYTVkN2QzMGQwOWY4ZTViZWEzYWNiMzcwMTJlZTFkZTA4NTdiZDg2NjY1MDQ3ZWQ3ZmEyMmY3ZGEzOSJ9&meetingId=770811&meetingParticipantId=2743340&tid=2867
-
-
 
 Ques : If you have to backup DB for auditing, how would you do and what services would you use for it?
 
