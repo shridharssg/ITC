@@ -1,4 +1,22 @@
-https://cx.persistent.com/scheduling/session-join?c=eyJpdiI6Ijg4NjdmMGYwMjQzOWQ2ZjM4ODU1ODIzMDQ5YzAzZjE5IiwiZGF0YSI6ImYzYjRlZTA3MmZlMDUwNGZlMDZlNTFjNTJlODUxNjA1ZjVlN2M5ZDBhMjE1YTRkNzFhZjNjMzg0ZTg3NTQwNjY5NjU5MmMyM2NjY2I3MmFhMDNlNmNiZWQ0MGMzMGJjZiJ9&meetingId=767281&meetingParticipantId=2733001&tid=2867
+Dear HR Team,
+
+I hope you are doing well.
+
+I would like to make a humble request regarding my notice period.
+
+As you are aware, I have been on the bench since 3rd May. During this period, I actively participated in multiple interviews, but unfortunately I was not selected for any internal opportunities. Considering my situation, I submitted my resignation.
+
+I have now received an offer from another organization, and they have requested me to join within the next 2 days. I will request them to extend my joining date by a few more days, but I sincerely request you to consider my early release, preferably within 7 days.
+
+I completely understand and respect the company's policy of serving a 90-day notice period. However, since I am currently on the bench and not assigned to any project, I humbly request you to consider my situation. Due to my family commitments and financial responsibilities, this opportunity is very important for me, and an early release would help me join the new organization and provide financial stability for my family.
+
+I would be truly grateful if you could consider my request sympathetically and approve an early release. Please let me know if any additional information or formalities are required from my side.
+
+Thank you for your time, understanding, and support. I look forward to your positive response.
+
+Kind regards,
+
+Shridhar Gadhave
 
 
 **1. AWS Services & Architecture**
