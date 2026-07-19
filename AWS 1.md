@@ -1,4 +1,215 @@
 
+
+10-WEEK GENAI BACKEND PLAN: NESTJS + AWS + GEMINI
+FOR: Node/Nest Dev, AWS Console Only, Docker Beginner
+STYLE: Deep Concept -> Example -> Code -> Task
+GOAL: Build 2 Real Projects: RAG API + Agent System
+
+
+[PREREQUISITES CHECKLIST]
+[ ] Node 20 LTS + NestJS CLI
+[ ] Docker Desktop Installed  
+[ ] AWS Account + IAM User with Access Key
+[ ] Gemini API Key from Google AI Studio
+[ ] Git + VSCode + Postman
+
+[COST BUDGET] $70 for 2 months. We will shut down AWS daily.
+
+WEEK 0: DOCKER + AWS SDK CRASH COURSE
+
+
+--- DAY 1: DOCKER IN 1 DAY ---
+CONCEPT: Docker = "Shipping container for code". Code + Node + Deps in 1 box
+WHY: So "it works on my machine" becomes "it works on AWS"
+EXAMPLE: Instead of installing Postgres on laptop, we run 1 command
+
+CODE:
+1. docker run hello-world
+2. docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres:16
+3. docker-compose up
+
+TASK: 
+1. Install Docker Desktop
+2. Create docker-compose.yml with: NestJS + Postgres + Redis + Qdrant
+3. `docker-compose up` and see all 4 running
+
+--- DAY 2: AWS SDK + S3 + IAM ---
+CONCEPT: AWS SDK = Control AWS from Node code instead of Console
+WHY: All deployment will be via code
+EXAMPLE: `s3.putObject()` instead of clicking "Upload"
+
+CODE: NestJS service to upload file to S3 using @aws-sdk/client-s3
+
+TASK:
+1. Create IAM User with S3FullAccess
+2. Code: Upload + Download + List files from S3
+3. Test with Postman
+
+--- DAY 3: AWS SDK + LAMBDA + SQS ---
+CONCEPT: Lambda = Run code without server. SQS = Queue to talk async
+WHY: For async doc processing in RAG
+
+CODE: NestJS -> Send message to SQS. Lambda reads it.
+
+TASK:
+1. Create SQS Queue in Console
+2. Code: Send message from NestJS
+3. Code: Lambda function that logs the message
+
+--- DAY 4: AWS RDS + SECRETS MANAGER ---
+CONCEPT: RDS = Managed Postgres. Secrets = Store API keys safely
+TASK:
+1. Create free-tier RDS Postgres
+2. Connect NestJS to it
+3. Store Gemini API key in Secrets Manager. Read from NestJS
+
+WEEK 1: GENAI CONCEPTS - FROM ZERO
+
+
+--- DAY 5: WHAT IS AN LLM? TOKENS + PROMPTS ---
+CONCEPT: LLM = Pattern matching machine. Token = ~0.75 words. $ = per token
+EXAMPLE: "Hello world" = 2 tokens. 1M tokens = $5
+CODE: Raw fetch call to Gemini API. No SDK. See JSON
+TASK: Build CLI: `npm run ask "what is RAG"` and stream answer
+
+--- DAY 6: WHAT ARE EMBEDDINGS? ---
+CONCEPT: Turn text into 1000 numbers. Similar meaning = similar numbers
+EXAMPLE: "King" - "Man" + "Woman" = "Queen" in vector space
+CODE: Get embedding for "apple" and "orange". Calculate cosine similarity
+TASK: Find which is more similar to "fruit": "car" or "banana"
+
+--- DAY 7: WHAT IS A VECTOR DATABASE? ---
+CONCEPT: Normal DB = WHERE id=1. Vector DB = "Find docs similar to this"
+WHY: We can't do similarity search in Postgres fast
+CODE: Install Qdrant with Docker. Add 3 docs. Search with 1 query
+TASK: Build mini search: "Find me doc about cats" from 10 docs
+
+--- DAY 8: WHAT IS RAG? THE 4 STEPS ---
+CONCEPT: Retrieval Augmented Generation = LLM + Your Docs
+ANALOGY: LLM = Student. RAG = Give student the textbook during exam
+4 STEPS: Load -> Chunk -> Embed -> Retrieve -> Answer
+CODE: 0. Just draw the diagram
+TASK: Explain RAG to a 5 year old in 3 lines
+
+--- DAY 9: WHAT IS CHUNKING? ---
+CONCEPT: Can't embed 500 page PDF. Split into 500 chunks of 500 tokens
+PROBLEM: Bad chunk = "The patient had" and "no cancer" in different chunks
+CODE: 3 chunkers: Fixed, Recursive, Semantic
+TASK: Chunk 1 PDF and check which keeps context best
+
+WEEK 2: LANGCHAIN.JS - MAKING IT EASY
+
+
+--- DAY 10: WHAT IS LANGCHAIN.JS? ---
+CONCEPT: Pre-built Legos for GenAI. So we don't write 200 lines
+EXAMPLE: Our Day 7 code was 50 lines. LangChain does it in 5
+CODE: Rebuild Day 7 with @langchain/community
+TASK: Convert your manual RAG to LangChain RAG
+
+--- DAY 11: DOCUMENT LOADERS + TEXT SPLITTERS ---
+CONCEPT: Loaders read PDF, Web, S3. Splitters do Day 9
+CODE: Load PDF from S3 -> Split -> Store in Qdrant
+TASK: API: POST /upload that triggers this
+
+--- DAY 12: RETRIEVERS + VECTORSTORES ---
+CONCEPT: Retriever = "Smart search". VectorStore = Qdrant/OpenSearch wrapper
+CODE: Build retriever that returns top 5 docs with score
+TASK: Add filter: "search only user_id=123 docs"
+
+--- DAY 13: MEMORY + CONVERSATIONAL RAG ---
+CONCEPT: How chatbot remembers "What did I ask 2 messages ago"
+CODE: ConversationBufferMemory with Postgres
+TASK: Chat API that remembers last 5 turns
+
+--- DAY 14: HOW TO TEST RAG? EVALS ---
+CONCEPT: "Is answer correct?" "Did it use right doc?"
+METRICS: Faithfulness, Answer Relevance
+CODE: Create 10 Q&A. Auto test your RAG
+TASK: If score < 80%, fail the test
+
+WEEK 3-4: PROJECT 1 - RAG API WITH NESTJS ON AWS
+
+
+WEEK 3: BUILD
+DAY 15: NestJS Setup. Modules: GeminiModule, RAGModule
+DAY 16: API 1: POST /upload -> S3 -> SQS
+DAY 17: Lambda: Read SQS -> Chunk -> Embed -> OpenSearch
+DAY 18: API 2: POST /chat -> RAG -> Return with citations
+DAY 19: Add Cognito Auth + Rate Limiting
+DAY 20: Add Redis Caching for embeddings
+
+WEEK 4: DEPLOY + POLISH
+DAY 21: Move Qdrant to OpenSearch Serverless on AWS
+DAY 22: Dockerize NestJS. Push to ECR
+DAY 23: Deploy to ECS Fargate. Connect to RDS
+DAY 24: Add Langfuse. See every LLM call + cost
+DAY 25: Load test with k6. Fix. Write README + Architecture Diagram
+
+WEEK 5: AGENTS - CONCEPT FIRST
+
+
+--- DAY 26: WHAT IS AN AGENT? ---
+CONCEPT: Agent = LLM + Tools + Loop. Can "DO" things
+EXAMPLE: RAG answers. Agent can "read logs" + "create Jira ticket"
+CODE: Make Gemini call function: get_weather("Thane")
+TASK: Build 3 tools: calculator, search, send_email
+
+--- DAY 27: WHAT IS LANGGRAPH.JS? ---
+CONCEPT: LangChain for loops. StateGraph = Nodes + Edges
+EXAMPLE: Node1: Think -> Node2: Call Tool -> Node3: Answer -> Back to Node1
+CODE: Build ReAct Agent: Thought -> Action -> Observation loop
+TASK: Agent that solves "2+2" by calling calculator tool
+
+--- DAY 28: MEMORY + CHECKPOINTS ---
+CONCEPT: Pause agent, save state, resume later
+CODE: Save graph state to Postgres
+TASK: Agent that can stop mid-way and continue
+
+--- DAY 29: MULTI-AGENT SYSTEMS ---
+CONCEPT: 1 Supervisor + 3 Workers. Boss delegates
+CODE: Supervisor -> ResearchAgent, CodeAgent, SummaryAgent
+TASK: "Research AI news" and delegate to 3 agents
+
+--- DAY 30: DEBUGGING AGENTS ---
+CONCEPT: Why agents loop, hallucinate tools
+TOOLS: Langfuse tracing, max_steps, guardrails
+TASK: Break agent on purpose. Then fix it
+
+WEEK 6-7: PROJECT 2 - AI OPS AGENT ON AWS
+
+
+WEEK 6: BUILD
+DAY 31: Tool 1: query_cloudwatch_logs using AWS SDK
+DAY 32: Tool 2: create_jira_ticket using Jira API
+DAY 33: Tool 3: query_postgres using TypeORM
+DAY 34: Build Supervisor Agent in LangGraph
+DAY 35: Test: "Error 500 in prod" -> Agent reads logs -> Creates Jira
+
+WEEK 7: DEPLOY
+DAY 36: Deploy agent worker to ECS. Trigger via SQS
+DAY 37: Save agent memory to RDS
+DAY 38: Full tracing to Langfuse. Dashboard
+DAY 39: Add Guardrails: "Agent cannot run DELETE SQL"
+DAY 40: Final testing + README
+
+WEEK 8-10: HARDENING + FINAL
+
+DAY 41-42: COST: Use Gemini Flash, Cache, Batch embeddings. Cut 70% cost
+DAY 43-44: SECURITY: Prompt injection tests. IAM least privilege
+DAY 45-46: SCALE: Test 100 concurrent agents. Add more ECS tasks
+DAY 47-48: REFACTOR: Clean code, add comments, improve docs
+DAY 49: WRITE: "10 things I learned about RAG and Agents"
+DAY 50: FINAL DEMO: Record video of both projects working
+
+[DELIVERABLES]
+1. Project 1: RAG API on AWS with evals
+2. Project 2: Multi-Agent backend on AWS
+3. 2 GitHub repos with READMEs
+4. Langfuse dashboard with traces
+
+
+
+
 **1. AWS Services & Architecture**
 
 AWS services used
