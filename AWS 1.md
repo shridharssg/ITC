@@ -1,3 +1,5 @@
+https://app.flocareer.com/dynamic/candidates/ssoLogin/?corp_id=2377&cand_id=637605&auth_token=d5742071ee9d4be6c13ce1de01f2a24c&redirect_uri=https://app.flocareer.com/flo3.0/interview/%3Freq=57971%26claim=2263472&is_tmpl=true
+
 
 
 10-WEEK GENAI BACKEND PLAN: NESTJS + AWS + GEMINI
