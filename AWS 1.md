@@ -1,3 +1,5 @@
+AQ.Ab8RN6LygTdAvrWb_84iwgizUmQQ2kgGdJ7vmM8BMwWK4eKppA
+
 
 10-WEEK GENAI BACKEND PLAN: NESTJS + AWS + GEMINI
 FOR: Node/Nest Dev, AWS Console Only, Docker Beginner
