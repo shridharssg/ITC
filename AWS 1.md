@@ -1,34 +1,3 @@
-AWS_REGION=ap-south-1
-AWS_ACCESS_KEY_ID=AKIA42TCVTSUJL6RDBYY
-AWS_SECRET_ACCESS_KEY=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
-S3_BUCKET=product-knowledge-ragapp
-SQS_QUEUE_URL=https://sqs.ap-south-1.amazonaws.com/881748974760/product-uploaded-queue
-
-
-GOOGLE_API_KEY=AIzaSyAnLXaM1EDwaVJLGhBrxGdrXLLSmAR4FBs
-LANGCHAIN_TRACING_V2=true
-LANGCHAIN_ENDPOINT='https://api.smith.langchain.com'
-LANGCHAIN_API_KEY=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
-LANGCHAIN_PROJECT='chatbot-demo'
-
-I'm working for ikea project where our app is used for in store application. Means there physical store employee will search products through app. Customer select the product and order is placed. Nothing else.here we show category wise product are showing. Now I want to create rag service in existing application where 6 ecs services already exists in nodejs nestjs AWS. Now rag service is in python fastapi. Here I'm planning like
-
-
-RAG application employee of store search the the things when customer asked any questions and employee has need to check in product manual. So rather than checking in manual, it will search in rag service bcz we allready injecti all docs by admin of store. So question like
-
-Warranty of product 
-Warranty like overall warrenty or part wise warranty if exist. 
-
-Product details 
-
-Compare two products. 
-
-
-
-Now I have only this things. But this is not multi agent. I want to add more 2 -3 things in it so it will multi agent rag. Like if customer asked to share this info on email then pdf should be created and send on email (hitl will add ) 
-Any other concepts to add ?
-
-
 
 10-WEEK GENAI BACKEND PLAN: NESTJS + AWS + GEMINI
 FOR: Node/Nest Dev, AWS Console Only, Docker Beginner
