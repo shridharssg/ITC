@@ -1,3 +1,16 @@
+AWS_REGION=ap-south-1
+AWS_ACCESS_KEY_ID=AKIA42TCVTSUJL6RDBYY
+AWS_SECRET_ACCESS_KEY=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
+S3_BUCKET=product-knowledge-ragapp
+SQS_QUEUE_URL=https://sqs.ap-south-1.amazonaws.com/881748974760/product-uploaded-queue
+
+
+GOOGLE_API_KEY=AIzaSyAnLXaM1EDwaVJLGhBrxGdrXLLSmAR4FBs
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_ENDPOINT='https://api.smith.langchain.com'
+LANGCHAIN_API_KEY=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
+LANGCHAIN_PROJECT='chatbot-demo'
+
 I'm working for ikea project where our app is used for in store application. Means there physical store employee will search products through app. Customer select the product and order is placed. Nothing else.here we show category wise product are showing. Now I want to create rag service in existing application where 6 ecs services already exists in nodejs nestjs AWS. Now rag service is in python fastapi. Here I'm planning like
 
 
