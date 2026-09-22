@@ -1,4 +1,13 @@
+Hi Hiring Team,
 
+I would like to apply for the Senior Principal Consultant – Node.js Full Stack Development role. I have 8+ years of hands-on experience in Node.js, TypeScript, JavaScript, Angular, REST APIs, Microservices, AWS, SQL Server, and enterprise application development. Additionally, I have experience with CI/CD, Docker, and cloud-native architectures.
+
+Please find my resume attached for your review. I would appreciate the opportunity to discuss how my experience aligns with your requirements.
+
+Thank you for your time and consideration.
+
+Regards,
+ Shridhar Sampat Gadhave
 
 Role Overview
 
