@@ -1,4 +1,93 @@
 
+
+Role Overview
+
+of Senior Principal Consultant – Node.js Full Stack Development
+
+ 
+
+In this role, the candidate is supposed to possess deep expertise in backend development using Node.js, JavaScript, Typescript, Angular/React, Vue.js, Rest APIs, and experience building microservices in a cloud-native environment. The ideal candidate will also have functional proficiency with React for web-based front-end development.
+
+ 
+
+Responsibilities:
+
+ 
+
+Design and implement scalable, secure, and high-performance enterprise applications.Design and implement scalable, secure and high-performance enterprise applications.
+Lead end-to-end software development lifecycle (SDLC) activities, including requirements of gathering, architecture, development, testing, deployment and support.
+Design, architect, and implement secure and scalable backend services leveraging Node.js and modern microservices architecture.
+Develop responsive and user-friendly web applications using Angular/React, Vue.js, JavaScript, TypeScript, HTML5, and CSS3.
+Build and integrate RESTful APIs, microservices and cloud-based solutions.
+Collaborate with product owners, business stakeholders, architects, and engineering teams to deliver innovative solutions.
+Drive code quality through code reviews, design reviews and adherence to industry best practices.
+Mentor and guide development teams, fostering technical growth and continuous improvement.
+Lead modernization and migration initiatives from legacy applications to modern cloud-native architectures.
+Implement CI/CD pipelines, DevOps practices and automated testing strategies.
+Ensure application security, performance optimization, scalability, and reliability.
+Having a good knowledge of Grafana.
+ 
+
+Qualifications we seek in you!
+
+Minimum qualifications
+
+ 
+
+Bachelor’s degree in business information systems (IS), computer science or related field, or equivalent-related IT experience
+ 
+
+ Preferred Skills:
+
+Programming Languages
+
+JavaScript (ES6+)
+TypeScript
+Backend Technologies
+
+Node.js
+RESTful Services
+Microservices Architecture
+Frontend Technologies
+
+Angular
+Vue.js
+JavaScript
+TypeScript
+HTML5
+CSS3
+Bootstrap
+Responsive Web Design
+Databases
+
+Microsoft SQL Server
+Redis
+Cloud & DevOps
+
+Microsoft Azure
+Docker
+Kubernetes
+Azure DevOps
+GitHub Actions
+ServiceNow
+CI/CD Pipelines
+Tools & Methodologies
+
+Git
+Agile/Scrum
+Unit Testing
+TDD
+Design Patterns
+Domain-Driven Design (DDD)
+
+
+
+
+
+ 
+
+
+
 10-WEEK GENAI BACKEND PLAN: NESTJS + AWS + GEMINI
 FOR: Node/Nest Dev, AWS Console Only, Docker Beginner
 STYLE: Deep Concept -> Example -> Code -> Task
