@@ -1,3 +1,22 @@
+
+Dear HR Team,
+
+I would like to discuss the possibility of reconsidering my resignation and exploring opportunities to continue with the organization.
+
+Over the last few months, I have significantly expanded my technical skill set in addition to my existing experience in Node.js and AWS. I have recently gained hands-on experience in Generative AI, including LLMs, RAG, Python/FastAPI, LangChain, LangGraph, pgvector, LLM evaluation using DeepEval, and monitoring using LangSmith. I have also developed a working RAG application as part of this learning.
+
+Considering my existing experience and these newly acquired GenAI skills, I would be interested in exploring any suitable internal project or role where I can contribute, particularly in Node.js/AWS and GenAI-related initiatives.
+
+My current last working day is 12 October 2026. Before proceeding further with my separation, I would appreciate it if you could let me know whether retention, withdrawal of resignation, or an opportunity for internal project allocation can be considered.
+
+I would be happy to discuss this further with you and provide details of my updated skill set and GenAI project experience.
+
+Regards,
+[Your Name]
+
+
+
+
 Hi Hiring Team,
 
 I would like to apply for the Senior Principal Consultant – Node.js Full Stack Development role. I have 8+ years of hands-on experience in Node.js, TypeScript, JavaScript, Angular, REST APIs, Microservices, AWS, SQL Server, and enterprise application development. Additionally, I have experience with CI/CD, Docker, and cloud-native architectures.
