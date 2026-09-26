@@ -1,0 +1,455 @@
+SYSTEM DESIGN — LANGGRAPH RAG APPLICATION
+============================================================
+
+1. HIGH-LEVEL ARCHITECTURE
+------------------------------------------------------------
+
+                    ┌─────────────────────┐
+                    │   Store Employee    │
+                    │   Chat UI           │
+                    │   (Streamlit/Web)   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ API Gateway / ALB   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                 ┌──────────────────────────┐
+                 │ Python FastAPI Service   │
+                 │                          │
+                 │ LangGraph Orchestrator   │
+                 └────────────┬─────────────┘
+                              │
+                              ▼
+                  ┌────────────────────────┐
+                  │      LangGraph         │
+                  │       Workflow         │
+                  └────────────┬───────────┘
+                               │
+             ┌─────────────────┼──────────────────┐
+             ▼                 ▼                  ▼
+       ┌───────────┐    ┌─────────────┐    ┌────────────┐
+       │ Retriever │    │ LLM / Agent │    │ HITL Node  │
+       └─────┬─────┘    └─────────────┘    └─────┬──────┘
+             │                                    │
+             ▼                                    ▼
+      ┌──────────────┐                    ┌─────────────┐
+      │ PostgreSQL   │                    │ Email/PDF   │
+      │ + pgvector   │                    │ Generation  │
+      └──────────────┘                    └─────────────┘
+             ▲
+             │
+      ┌──────┴────────┐
+      │ Embeddings    │
+      │ Model         │
+      └───────────────┘
+
+             DOCUMENT INGESTION
+                     │
+                     ▼
+              ┌─────────────┐
+              │ Amazon S3   │
+              │ PDF Manuals │
+              └──────┬──────┘
+                     │
+                     ▼
+             Extract → Chunk
+                     │
+                     ▼
+                Embeddings
+                     │
+                     ▼
+                pgvector
+
+
+2. MAIN COMPONENTS
+------------------------------------------------------------
+
+A. FRONTEND
+   • Streamlit / Web Chat UI
+   • Employee asks questions such as:
+       - "What is the warranty for this product?"
+       - "Compare Product A and Product B."
+       - "What is the warranty for the motor?"
+       - "Generate a PDF for the customer."
+
+B. FASTAPI
+   • Authentication / Authorization
+   • API endpoints
+   • Request validation
+   • Calls LangGraph
+   • Returns streaming / final response
+
+C. LANGGRAPH
+   LangGraph acts as the ORCHESTRATION LAYER.
+
+   It coordinates:
+   • Query understanding
+   • Retrieval
+   • LLM calls
+   • Validation
+   • Retry / query rewriting
+   • Human-in-the-loop
+   • PDF / Email workflow
+
+
+3. LANGGRAPH WORKFLOW
+------------------------------------------------------------
+
+                         START
+                           │
+                           ▼
+                  Understand Query
+                           │
+                           ▼
+                    Need Retrieval?
+                           │
+                 ┌─────────┴─────────┐
+                 │                   │
+                No                  Yes
+                 │                   │
+                 ▼                   ▼
+                LLM           Retrieve Documents
+                                     │
+                                     ▼
+                              Rerank / Filter
+                                     │
+                                     ▼
+                               Generate Answer
+                                     │
+                                     ▼
+                              Grounding Check
+                                     │
+                              ┌──────┴──────┐
+                              │             │
+                            Valid        Invalid
+                              │             │
+                              ▼             ▼
+                           Answer      Retry / Rewrite
+                              │
+                              ▼
+                      Need Customer PDF?
+                              │
+                         ┌────┴────┐
+                         │         │
+                        No        Yes
+                         │         │
+                         ▼         ▼
+                        END    HITL Approval
+                                    │
+                                    ▼
+                             Generate PDF / Email
+                                    │
+                                    ▼
+                                   END
+
+
+4. RAG PIPELINE
+------------------------------------------------------------
+
+A. DOCUMENT INGESTION PIPELINE
+
+   PDF uploaded
+        │
+        ▼
+       S3
+        │
+        ▼
+   PDF extraction
+        │
+        ▼
+   Document cleaning
+        │
+        ▼
+      Chunking
+        │
+        ▼
+   Embedding model
+        │
+        ▼
+   PostgreSQL + pgvector
+
+
+B. QUERY-TIME RAG PIPELINE
+
+   User Query
+        │
+        ▼
+   Query understanding
+        │
+        ▼
+   Query embedding
+        │
+        ▼
+   pgvector similarity search
+        │
+        ▼
+   Top-K chunks
+        │
+        ▼
+   Metadata filtering
+        │
+        ▼
+   Optional reranking
+        │
+        ▼
+       LLM
+        │
+        ▼
+   Answer with citations
+
+
+5. DATABASE DESIGN
+------------------------------------------------------------
+
+   Keep document storage and vector storage separate.
+
+   S3
+   └── Original PDF manuals
+
+   PostgreSQL + pgvector
+   └── Chunks
+   └── Embeddings
+   └── Metadata
+
+
+   Example tables:
+
+   products
+   ---------------------------------------------------------
+   product_id
+   product_name
+   model_number
+   category
+
+
+   documents
+   ---------------------------------------------------------
+   document_id
+   product_id
+   s3_path
+   version
+
+
+   document_chunks
+   ---------------------------------------------------------
+   chunk_id
+   document_id
+   content
+   embedding
+   page_number
+
+
+6. LANGGRAPH STATE
+------------------------------------------------------------
+
+   LangGraph maintains the state throughout the workflow.
+
+   Example:
+
+   class RAGState(TypedDict):
+       query: str
+       product_id: str
+       retrieved_docs: list
+       answer: str
+       confidence: float
+       needs_human_approval: bool
+       pdf_required: bool
+       email_required: bool
+
+
+   Each LangGraph node reads and/or modifies this state.
+
+   Example flow:
+
+       Query
+         │
+         ▼
+       Retriever
+         │
+         ▼
+       retrieved_docs added to state
+         │
+         ▼
+       LLM
+         │
+         ▼
+       answer added to state
+         │
+         ▼
+       Validation
+         │
+         ▼
+       HITL
+
+
+7. HUMAN-IN-THE-LOOP (HITL)
+------------------------------------------------------------
+
+   For customer-facing operations, use a human approval step.
+
+   Example:
+
+       LLM generates customer response
+                    │
+                    ▼
+             Validation node
+                    │
+                    ▼
+              Human approval?
+                    │
+              ┌─────┴─────┐
+              │           │
+            Reject      Approve
+              │           │
+              ▼           ▼
+             END      Generate PDF
+                          │
+                          ▼
+                      Send Email
+
+
+   LangGraph checkpointing allows the workflow to:
+
+   • Pause at the human approval step
+   • Store the current state
+   • Wait for human approval
+   • Resume the workflow from the same point
+
+
+8. AWS DEPLOYMENT
+------------------------------------------------------------
+
+                         AWS
+                          │
+                    ┌─────▼─────┐
+                    │    ALB    │
+                    └─────┬─────┘
+                          │
+                    ┌─────▼──────┐
+                    │ ECS Fargate│
+                    │ FastAPI    │
+                    │ LangGraph  │
+                    └─────┬──────┘
+                          │
+             ┌────────────┼────────────┐
+             │            │            │
+             ▼            ▼            ▼
+            S3       PostgreSQL     Secrets
+         Documents    + pgvector    Manager
+                          │
+                          ▼
+                         LLM
+
+
+   Supporting AWS services:
+
+   • S3               → PDF/document storage
+   • ECS Fargate      → FastAPI + LangGraph application
+   • ALB              → Application routing
+   • API Gateway      → Optional public API layer
+   • PostgreSQL       → Application data + pgvector
+   • Secrets Manager  → API keys / DB credentials
+   • CloudWatch       → Logs and infrastructure metrics
+   • ECR              → Docker image storage
+   • SES / SNS        → Email / notification workflow
+   • GitHub Actions   → CI/CD pipeline
+
+
+9. OBSERVABILITY
+------------------------------------------------------------
+
+   Use LangSmith for the GenAI layer.
+
+                       User
+                         │
+                         ▼
+                      FastAPI
+                         │
+                         ▼
+                     LangGraph
+                         │
+          ┌──────────────┼──────────────┐
+          ▼              ▼              ▼
+      Retriever         LLM          Validation
+          │              │              │
+          └──────────────┼──────────────┘
+                         ▼
+                     LangSmith
+
+
+   Track:
+
+   • Latency
+   • Token usage
+   • Retrieval quality
+   • Failed queries
+   • Hallucinations
+   • LLM responses
+   • Node execution
+   • Prompt versions
+
+
+   DeepEval can be used for:
+
+   • Faithfulness
+   • Answer relevancy
+   • Contextual relevancy
+   • Retrieval quality
+
+
+10. 2-MINUTE INTERVIEW ANSWER
+------------------------------------------------------------
+
+"I designed the application using a Python FastAPI backend with
+LangGraph as the orchestration layer. Product manuals are uploaded
+to S3, processed through an ingestion pipeline, chunked and converted
+into embeddings, and stored in PostgreSQL with pgvector along with
+metadata such as product ID, document ID and page number.
+
+When an employee asks a question, FastAPI sends the request to the
+LangGraph workflow. The graph first understands the query and
+determines whether retrieval is required. The retriever performs
+semantic search against pgvector and returns relevant chunks. The
+LLM then generates a grounded response using those chunks.
+
+I use LangGraph state and checkpointing to maintain the workflow
+state. For customer-facing operations such as generating a PDF and
+sending an email, I introduce a human-in-the-loop approval node.
+The workflow pauses for approval and resumes after the user approves.
+
+The application can be deployed on ECS Fargate behind an ALB, with
+S3 for documents, PostgreSQL/pgvector for vector search, Secrets
+Manager for credentials and CloudWatch for infrastructure monitoring.
+LangSmith is used for tracing and monitoring the LLM and LangGraph
+workflow, while DeepEval is used for evaluating RAG quality."
+
+
+11. IMPORTANT INTERVIEW POINT
+------------------------------------------------------------
+
+   Do NOT describe LangGraph as the vector database or RAG itself.
+
+   RAG
+   └── Retrieval + Augmented Context + Generation
+
+   LangGraph
+   └── Workflow / Orchestration framework
+
+   LangGraph coordinates:
+
+   • Retrieval
+   • LLM calls
+   • Validation
+   • Retry / query rewriting
+   • State management
+   • Checkpointing
+   • Human-in-the-loop
+   • PDF / Email workflow
+
+
+============================================================
+END
+============================================================
