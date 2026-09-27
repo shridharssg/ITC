@@ -1,3 +1,143 @@
+MODULE 01
+Document Upload & Ingestion
+    ↓
+~15-20 deep Q&A
+
+MODULE 02
+Document Parsing
+    ↓
+~10-15 deep Q&A
+
+MODULE 03
+Chunking
+    ↓
+~15-20 deep Q&A
+
+MODULE 04
+Embeddings
+    ↓
+~15 Q&A
+
+MODULE 05
+Vector Database
+    ↓
+~15-20 Q&A
+
+MODULE 06
+Metadata & Filtering
+    ↓
+~10 Q&A
+
+MODULE 07
+Retrieval
+    ↓
+~20 Q&A
+
+MODULE 08
+Hybrid Search
+    ↓
+~10 Q&A
+
+MODULE 09
+Reranking
+    ↓
+~10-15 Q&A
+
+MODULE 10
+Query Transformation
+    ↓
+~10-15 Q&A
+
+MODULE 11
+LLM Selection & Routing
+    ↓
+~15 Q&A
+
+MODULE 12
+Context Management
+    ↓
+~10-15 Q&A
+
+MODULE 13
+Prompt & Generation
+    ↓
+~15 Q&A
+
+MODULE 14
+Security & Prompt Injection
+    ↓
+~20 Q&A
+
+MODULE 15
+Cost Optimization
+    ↓
+~20 Q&A
+
+MODULE 16
+Latency Optimization
+    ↓
+~20 Q&A
+
+MODULE 17
+Scalability
+    ↓
+~20 Q&A
+
+MODULE 18
+Reliability & Failure Handling
+    ↓
+~15 Q&A
+
+MODULE 19
+Caching
+    ↓
+~10 Q&A
+
+MODULE 20
+Versioning / Updates / Deletes
+    ↓
+~15 Q&A
+
+MODULE 21
+Multi-tenancy
+    ↓
+~10 Q&A
+
+MODULE 22
+Conversational RAG
+    ↓
+~10 Q&A
+
+MODULE 23
+Evaluation & Observability
+    ↓
+~20 Q&A
+
+MODULE 24
+AWS Production Architecture
+    ↓
+~20 Q&A
+
+MODULE 25
+RAG vs Fine-tuning vs Long Context
+    ↓
+~10 Q&A
+
+MODULE 26
+Advanced RAG / Agentic RAG
+    ↓
+~15 Q&A
+
+
+
+
+Start module 1. Give all things in .txt format with proper formatting. We have already discussed that I'm not preparing only ques ans. It should be like proper system design understanding. Module  should be like that so later any questions asked I'm able to explain it properly bcz i understand system design.
+
+
+
+
+
+
 Microsoft Teams meeting
 Join: https://teams.microsoft.com/meet/289699002184607?p=p3txB34fyFCik0ukwv
 Meeting ID: 289 699 002 184 607
